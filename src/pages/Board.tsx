@@ -14,8 +14,12 @@ export default (props: Props = { type: "black" }) => {
   const initialState = {
     text: `ほらね
   ・こんな
-　・感じで
-　・記載できますよ`
+　・かんじで
+　・かんたんに
+　・リアルな
+　・もじが
+
+かけますよ。`
   };
   const targetRef = useRef(null);
   const [text, setText] = useState<string>(initialState.text);
@@ -51,7 +55,7 @@ export default (props: Props = { type: "black" }) => {
           backgroundSize: "100% auto",
           width: "800px",
           height: "500px",
-          padding: `${type === "white" ? "20px 60px" : "30px 20px"}`
+          padding: `${type === "white" ? "20px 60px" : "20px 20px"}`
         }}
       >
         <textarea
