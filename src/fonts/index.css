@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: "magic";
+  src: url(raw/TanukiMagic.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "jido";
   src: url(raw/ZenjidoJP-FeltPenLMT-TTF.ttf) format("truetype");
 }

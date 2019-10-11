@@ -22,6 +22,16 @@ const fonts: Fonts = {
     borderStyle: "solid",
     padding: 10
   },
+  magic: {
+    title: "マジック風",
+    color: "#000",
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    fontSize: 57,
+    borderWidth: 5,
+    borderStyle: "solid",
+    padding: 0
+  },
   jido: {
     title: "こども風",
     color: "#000",
