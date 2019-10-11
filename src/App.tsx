@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import fonts from "./fonts";
 import "./fonts/index.css";
+import domtoimage from "dom-to-image";
 
 export default () => {
+  const outRef = useRef(null);
   const [text, setText] = useState<string>("こんちわ");
   const [fontName, setFontName] = useState("game");
   const containerSize = 128;
@@ -11,10 +13,27 @@ export default () => {
     setText(event.target.value);
   };
 
+  const handleSave = () => {
+    const node = outRef.current;
+    if (node === null) return;
+    domtoimage
+      .toPng(node)
+      .then(function(dataUrl) {
+        var link = document.createElement("a");
+        link.download = "image.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(function(error) {
+        console.error("oops, something went wrong!", error);
+      });
+  };
+
   return (
     <>
       <textarea value={text} onChange={handleTextChange} />
       <div
+        ref={outRef}
         style={{
           display: "flex",
           justifyContent: "center",
@@ -35,6 +54,7 @@ export default () => {
       >
         {text}
       </div>
+      <input type="button" value="Save" onClick={handleSave} />
     </>
   );
 };
