@@ -9,6 +9,16 @@
 }
 
 @font-face {
+  font-family: "chalk";
+  src: url(raw/kokubanB.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "crayon";
+  src: url(raw/crayon_1-1.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "jido";
   src: url(raw/ZenjidoJP-FeltPenLMT-TTF.ttf) format("truetype");
 }

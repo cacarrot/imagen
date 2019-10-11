@@ -10,6 +10,7 @@ type Props = {
 
 export default (props: Props = { type: "black" }) => {
   const { type } = props;
+  const maxRow = type === "white" ? 10 : 8;
   const initialState = {
     text: `ほらね
   ・こんな
@@ -23,7 +24,7 @@ export default (props: Props = { type: "black" }) => {
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
     const rows = text.split("\n").length;
-    if (event.keyCode == 13 && rows >= 8) {
+    if (event.keyCode == 13 && rows >= maxRow) {
       event.preventDefault();
     }
   };
@@ -50,7 +51,7 @@ export default (props: Props = { type: "black" }) => {
           backgroundSize: "100% auto",
           width: "800px",
           height: "500px",
-          padding: `${type === "white" ? "20px 50px" : "30px 20px"}`
+          padding: `${type === "white" ? "20px 60px" : "30px 20px"}`
         }}
       >
         <textarea
@@ -61,9 +62,9 @@ export default (props: Props = { type: "black" }) => {
             borderWidth: 0,
             outline: "none",
             resize: "none",
-            width: "700px",
-            height: "240px",
-            fontFamily: "magic",
+            width: "800px",
+            height: "300px",
+            fontFamily: `${type === "white" ? "magic" : "chalk"}`,
             fontSize: "30px",
             overflow: "hidden",
             fontWeight: "bold",

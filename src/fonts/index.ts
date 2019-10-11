@@ -32,6 +32,26 @@ const fonts: Fonts = {
     borderStyle: "solid",
     padding: 3
   },
+  chalk: {
+    title: "チョーク風",
+    color: "#000",
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    fontSize: 53,
+    borderWidth: 5,
+    borderStyle: "solid",
+    padding: 3
+  },
+  crayon: {
+    title: "クレヨン風",
+    color: "#000",
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    fontSize: 53,
+    borderWidth: 5,
+    borderStyle: "solid",
+    padding: 3
+  },
   jido: {
     title: "こども風",
     color: "#000",
