@@ -2,11 +2,17 @@ import React, { useState, useRef } from "react";
 import "../fonts/index.css";
 import ImageUtil from "../utils/ImageUtil";
 import whiteboardImage from "../images/whiteboard.png";
+import kokubanImage from "../images/kokuban.png";
 
-export default () => {
+type Props = {
+  type?: "white" | "black";
+};
+
+export default (props: Props = { type: "black" }) => {
+  const { type } = props;
   const initialState = {
-    text: `ホワイトボード
-　・こんな
+    text: `ほらね
+  ・こんな
 　・感じで
 　・記載できますよ`
   };
@@ -37,12 +43,14 @@ export default () => {
         ref={targetRef}
         style={{
           fontFamily: "magic",
-          backgroundImage: `url(${whiteboardImage})`,
+          backgroundImage: `url(${
+            type === "white" ? whiteboardImage : kokubanImage
+          })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% auto",
-          width: "700px",
-          height: "300px",
-          padding: "20px 50px"
+          width: "800px",
+          height: "500px",
+          padding: `${type === "white" ? "20px 50px" : "30px 20px"}`
         }}
       >
         <textarea
@@ -58,7 +66,9 @@ export default () => {
             fontFamily: "magic",
             fontSize: "30px",
             overflow: "hidden",
-            fontWeight: "bold"
+            fontWeight: "bold",
+            backgroundColor: "transparent",
+            color: `${type === "white" ? "#000" : "#fff"}`
           }}
           autoFocus
         />
