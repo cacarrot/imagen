@@ -4,14 +4,20 @@ import ImageUtil from "../utils/ImageUtil";
 import whiteboardImage from "../images/whiteboard.png";
 
 export default () => {
+  const initialState = {
+    text: `ホワイトボード
+　・こんな
+　・感じで
+　・記載できますよ`
+  };
   const targetRef = useRef(null);
-  const [text, setText] = useState<string>("ホワイトボード");
+  const [text, setText] = useState<string>(initialState.text);
 
   const handleTextKeyDown = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
     const rows = text.split("\n").length;
-    if (event.keyCode == 13 && rows >= 10) {
+    if (event.keyCode == 13 && rows >= 8) {
       event.preventDefault();
     }
   };
@@ -23,8 +29,6 @@ export default () => {
   const handleSave = () => {
     ImageUtil.saveAsPng(targetRef);
   };
-
-  const fontSize = 24;
 
   return (
     <>
@@ -50,10 +54,11 @@ export default () => {
             outline: "none",
             resize: "none",
             width: "700px",
-            height: "250px",
+            height: "240px",
             fontFamily: "magic",
-            fontSize: `${fontSize}px`,
-            overflow: "hidden"
+            fontSize: "30px",
+            overflow: "hidden",
+            fontWeight: "bold"
           }}
           autoFocus
         />
