@@ -1,11 +1,10 @@
 import React, { useState, useRef } from "react";
 import fonts from "./fonts";
 import "./fonts/index.css";
-import domtoimage from "dom-to-image";
-import { saveAs } from "file-saver";
+import ImageUtil from "./utils/ImageUtil";
 
 export default () => {
-  const outRef = useRef(null);
+  const targetRef = useRef(null);
   const [text, setText] = useState<string>("こんちわ");
   const [fontName, setFontName] = useState("game");
   const containerSize = 128;
@@ -15,24 +14,21 @@ export default () => {
   };
 
   const handleSave = () => {
-    const node = outRef.current;
-    if (node === null) return;
-    domtoimage.toBlob(node).then(function(blob) {
-      saveAs(blob, "out.png");
-    });
+    ImageUtil.saveAsPng(targetRef);
   };
 
   return (
     <>
       <textarea value={text} onChange={handleTextChange} />
       <div
-        ref={outRef}
+        ref={targetRef}
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           width: `${containerSize}px`,
           height: `${containerSize}px`,
+          padding: `${fonts[fontName].padding}px`,
           fontFamily: `${fontName}`,
           fontSize: `${fonts[fontName].fontSize}px`,
           lineHeight: `${fonts[fontName].fontSize}px`,

@@ -7,6 +7,7 @@ type Fonts = {
     fontSize: number;
     borderWidth: number;
     borderStyle: string;
+    padding: number;
   };
 };
 
@@ -18,7 +19,8 @@ const fonts: Fonts = {
     borderColor: "#fff",
     fontSize: 64,
     borderWidth: 1,
-    borderStyle: "solid"
+    borderStyle: "solid",
+    padding: 10
   },
   jido: {
     title: "こども風",
@@ -27,7 +29,8 @@ const fonts: Fonts = {
     borderColor: "#000",
     fontSize: 57,
     borderWidth: 5,
-    borderStyle: "solid"
+    borderStyle: "solid",
+    padding: 0
   }
 };
 
