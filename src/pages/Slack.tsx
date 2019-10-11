@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import fonts from "./fonts";
-import "./fonts/index.css";
-import ImageUtil from "./utils/ImageUtil";
+import fonts from "../fonts";
+import "../fonts/index.css";
+import ImageUtil from "../utils/ImageUtil";
 
 export default () => {
   const targetRef = useRef(null);
