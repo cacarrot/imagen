@@ -4,7 +4,7 @@ import "./fonts/index.css";
 
 export default () => {
   const [text, setText] = useState<string>("こんちわ");
-  const [fontName, setFontName] = useState("jido");
+  const [fontName, setFontName] = useState("game");
   const containerSize = 128;
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -26,6 +26,8 @@ export default () => {
           lineHeight: `${fonts[fontName].fontSize}px`,
           borderWidth: `${fonts[fontName].borderWidth}px`,
           borderColor: `${fonts[fontName].borderColor}`,
+          backgroundColor: `${fonts[fontName].backgroundColor}`,
+          color: `${fonts[fontName].color}`,
           borderStyle: "solid",
           borderRadius: "10px",
           overflow: "hidden"

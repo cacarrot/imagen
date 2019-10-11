@@ -1,9 +1,9 @@
 @font-face {
+  font-family: "game";
+  src: url(raw/PixelMplus12-Regular.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "jido";
   src: url(raw/ZenjidoJP-FeltPenLMT-TTF.ttf) format("truetype");
 }
-
-/* @font-face {
-  font-family: "dq";
-  src: url(raw/DQ.TTF) format("truetype");
-} */
