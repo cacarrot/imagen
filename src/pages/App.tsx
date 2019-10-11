@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Slack from "./Slack";
+import SlackIcon from "./SlackIcon";
 import WhiteBoard from "./WhiteBoard";
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
         <WhiteBoard />
       </TabPanel>
       <TabPanel>
-        <Slack />
+        <SlackIcon />
       </TabPanel>
     </Tabs>
   );

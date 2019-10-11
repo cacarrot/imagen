@@ -7,6 +7,15 @@ export default () => {
   const targetRef = useRef(null);
   const [text, setText] = useState<string>("ホワイトボード");
 
+  const handleTextKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    const rows = text.split("\n").length;
+    if (event.keyCode == 13 && rows >= 10) {
+      event.preventDefault();
+    }
+  };
+
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
   };
@@ -35,6 +44,7 @@ export default () => {
         <textarea
           value={text}
           onChange={handleTextChange}
+          onKeyDown={handleTextKeyDown}
           style={{
             borderWidth: 0,
             outline: "none",

@@ -38,7 +38,7 @@ export default () => {
   return (
     <>
       <div>
-        <input type="text" value={text} onChange={handleTextChange} />
+        <input type="text" value={text} onChange={handleTextChange} autoFocus />
         <select onChange={handleSelectChange}>{displaySelectOptions()}</select>
       </div>
       <div
