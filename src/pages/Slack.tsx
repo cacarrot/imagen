@@ -41,7 +41,6 @@ export default () => {
         <input type="text" value={text} onChange={handleTextChange} />
         <select onChange={handleSelectChange}>{displaySelectOptions()}</select>
       </div>
-      <div></div>
       <div
         ref={targetRef}
         style={{
