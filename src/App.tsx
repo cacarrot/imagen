@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import fonts from "./fonts";
 import "./fonts/index.css";
 import domtoimage from "dom-to-image";
+import { saveAs } from "file-saver";
 
 export default () => {
   const outRef = useRef(null);
@@ -16,17 +17,9 @@ export default () => {
   const handleSave = () => {
     const node = outRef.current;
     if (node === null) return;
-    domtoimage
-      .toPng(node)
-      .then(function(dataUrl) {
-        var link = document.createElement("a");
-        link.download = "image.png";
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch(function(error) {
-        console.error("oops, something went wrong!", error);
-      });
+    domtoimage.toBlob(node).then(function(blob) {
+      saveAs(blob, "out.png");
+    });
   };
 
   return (
