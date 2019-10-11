@@ -17,7 +17,7 @@ const fonts: Fonts = {
     color: "#fff",
     backgroundColor: "#000",
     borderColor: "#fff",
-    fontSize: 64,
+    fontSize: 53,
     borderWidth: 1,
     borderStyle: "solid",
     padding: 10

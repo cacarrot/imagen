@@ -60,8 +60,9 @@ export default () => {
           backgroundColor: `${currentFont.backgroundColor}`,
           color: `${currentFont.color}`,
           borderStyle: "solid",
-          borderRadius: "10px",
-          overflow: "hidden"
+          borderRadius: "20px",
+          overflow: "hidden",
+          boxSizing: "border-box"
         }}
       >
         {text}
