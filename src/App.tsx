@@ -9,6 +9,10 @@ export default () => {
   const [fontName, setFontName] = useState("game");
   const containerSize = 128;
 
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFontName(event.target.value);
+  };
+
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
   };
@@ -17,9 +21,28 @@ export default () => {
     ImageUtil.saveAsPng(targetRef);
   };
 
+  const displaySelectOptions = () => {
+    let fontArray = [];
+    for (const key in fonts) {
+      if (fonts.hasOwnProperty(key)) {
+        fontArray.push(Object.assign({}, fonts[key], { name: key }));
+      }
+    }
+    return fontArray.map(item => {
+      return <option value={item.name}>{item.title}</option>;
+    });
+  };
+
+  const currentFont = fonts[fontName];
+
   return (
     <>
-      <textarea value={text} onChange={handleTextChange} />
+      <div>
+        <select onChange={handleSelectChange}>{displaySelectOptions()}</select>
+      </div>
+      <div>
+        <textarea value={text} onChange={handleTextChange} />
+      </div>
       <div
         ref={targetRef}
         style={{
@@ -28,14 +51,14 @@ export default () => {
           alignItems: "center",
           width: `${containerSize}px`,
           height: `${containerSize}px`,
-          padding: `${fonts[fontName].padding}px`,
+          padding: `${currentFont.padding}px`,
           fontFamily: `${fontName}`,
-          fontSize: `${fonts[fontName].fontSize}px`,
-          lineHeight: `${fonts[fontName].fontSize}px`,
-          borderWidth: `${fonts[fontName].borderWidth}px`,
-          borderColor: `${fonts[fontName].borderColor}`,
-          backgroundColor: `${fonts[fontName].backgroundColor}`,
-          color: `${fonts[fontName].color}`,
+          fontSize: `${currentFont.fontSize}px`,
+          lineHeight: `${currentFont.fontSize}px`,
+          borderWidth: `${currentFont.borderWidth}px`,
+          borderColor: `${currentFont.borderColor}`,
+          backgroundColor: `${currentFont.backgroundColor}`,
+          color: `${currentFont.color}`,
           borderStyle: "solid",
           borderRadius: "10px",
           overflow: "hidden"
