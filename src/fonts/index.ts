@@ -27,10 +27,10 @@ const fonts: Fonts = {
     color: "#000",
     backgroundColor: "#fff",
     borderColor: "#000",
-    fontSize: 57,
+    fontSize: 53,
     borderWidth: 5,
     borderStyle: "solid",
-    padding: 0
+    padding: 3
   },
   jido: {
     title: "こども風",
