@@ -13,7 +13,7 @@ export default () => {
     setFontName(event.target.value);
   };
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
 
@@ -38,11 +38,10 @@ export default () => {
   return (
     <>
       <div>
+        <input type="text" value={text} onChange={handleTextChange} />
         <select onChange={handleSelectChange}>{displaySelectOptions()}</select>
       </div>
-      <div>
-        <textarea value={text} onChange={handleTextChange} />
-      </div>
+      <div></div>
       <div
         ref={targetRef}
         style={{
