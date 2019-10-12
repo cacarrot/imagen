@@ -4,39 +4,44 @@ import ImageUtil from "../utils/ImageUtil";
 import whiteboardImage from "../images/whiteboard.png";
 import kokubanImage from "../images/kokuban.png";
 import Loading from "../components/Loading";
+import { store, view } from "react-easy-state";
 
-type Props = {
-  type?: "white" | "black";
-};
-
-export default (props: Props = { type: "black" }) => {
-  const { type } = props;
-  const maxRow = type === "white" ? 10 : 8;
-  const initialState = {
-    text: `ほらね
-  ・こんな
+const initialState = {
+  text: `ほら、
+・こんな
 　・かんじで
 　・かんたんに
 　・リアルな
 　・もじが
 
 かけますよ。`
-  };
+};
+
+const globalState = store(initialState);
+const changeText = (afterText: string) => (globalState.text = afterText);
+
+type Props = {
+  type?: "white" | "black";
+};
+
+const Board = (props: Props = { type: "black" }) => {
+  const { type } = props;
+  const maxRow = type === "white" ? 10 : 8;
+
   const targetRef = useRef(null);
-  const [text, setText] = useState<string>(initialState.text);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleTextKeyDown = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
-    const rows = text.split("\n").length;
+    const rows = globalState.text.split("\n").length;
     if (event.keyCode === 13 && rows >= maxRow) {
       event.preventDefault();
     }
   };
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
+    changeText(event.target.value);
   };
 
   const handleSave = () => {
@@ -64,7 +69,7 @@ export default (props: Props = { type: "black" }) => {
         }}
       >
         <textarea
-          value={text}
+          value={globalState.text}
           onChange={handleTextChange}
           onKeyDown={handleTextKeyDown}
           style={{
@@ -87,3 +92,5 @@ export default (props: Props = { type: "black" }) => {
     </>
   );
 };
+
+export default view(Board);
