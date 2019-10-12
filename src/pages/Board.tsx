@@ -3,6 +3,7 @@ import "../fonts/index.css";
 import ImageUtil from "../utils/ImageUtil";
 import whiteboardImage from "../images/whiteboard.png";
 import kokubanImage from "../images/kokuban.png";
+import Loading from "../components/Loading";
 
 type Props = {
   type?: "white" | "black";
@@ -23,12 +24,13 @@ export default (props: Props = { type: "black" }) => {
   };
   const targetRef = useRef(null);
   const [text, setText] = useState<string>(initialState.text);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleTextKeyDown = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
     const rows = text.split("\n").length;
-    if (event.keyCode == 13 && rows >= maxRow) {
+    if (event.keyCode === 13 && rows >= maxRow) {
       event.preventDefault();
     }
   };
@@ -38,7 +40,10 @@ export default (props: Props = { type: "black" }) => {
   };
 
   const handleSave = () => {
-    ImageUtil.saveAsPng(targetRef);
+    setIsLoading(true);
+    ImageUtil.saveAsPng(targetRef, () => {
+      setIsLoading(false);
+    });
   };
 
   return (
@@ -78,6 +83,7 @@ export default (props: Props = { type: "black" }) => {
           autoFocus
         />
       </div>
+      <Loading isLoading={isLoading} />
     </>
   );
 };
