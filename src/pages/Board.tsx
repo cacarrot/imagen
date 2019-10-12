@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import "../fonts/index.css";
 import ImageUtil from "../utils/ImageUtil";
-import whiteboardImage from "../images/whiteboard.png";
-import kokubanImage from "../images/kokuban.png";
+import whiteboardImage from "../images/whiteboard.webp";
+import kokubanImage from "../images/kokuban.webp";
 import Loading from "../components/Loading";
 
 type Props = {
