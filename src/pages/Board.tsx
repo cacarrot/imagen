@@ -59,8 +59,10 @@ export default (props: Props = { type: "black" }) => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% auto",
           width: "800px",
-          height: "500px",
-          padding: `${type === "white" ? "20px 60px" : "20px 20px"}`
+          height: `${type === "white" ? "500px" : "454px"}`,
+          margin: "0",
+          padding: `${type === "white" ? "20px 60px" : "15px 20px 20px"}`,
+          boxSizing: "border-box"
         }}
       >
         <textarea
@@ -71,8 +73,8 @@ export default (props: Props = { type: "black" }) => {
             borderWidth: 0,
             outline: "none",
             resize: "none",
-            width: "800px",
-            height: "300px",
+            width: `${type === "white" ? "680px" : "750px"}`,
+            height: `${type === "white" ? "250px" : "250px"}`,
             fontFamily: `${type === "white" ? "magic" : "chalk"}`,
             fontSize: "30px",
             overflow: "hidden",
