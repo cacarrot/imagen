@@ -1,24 +1,24 @@
 @font-face {
   font-family: "game";
-  src: url(raw/PixelMplus12-Regular.ttf) format("truetype");
+  src: url(raw/PixelMplus12-Regular.woff) format("woff");
 }
 
 @font-face {
   font-family: "magic";
-  src: url(raw/TanukiMagic.ttf) format("truetype");
+  src: url(raw/TanukiMagic.woff) format("woff");
 }
 
 @font-face {
   font-family: "chalk";
-  src: url(raw/kokubanB.ttf) format("truetype");
+  src: url(raw/kokubanB.woff) format("woff");
 }
 
 @font-face {
   font-family: "crayon";
-  src: url(raw/crayon_1-1.ttf) format("truetype");
+  src: url(raw/crayon_1-1.woff) format("woff");
 }
 
 @font-face {
   font-family: "jido";
-  src: url(raw/ZenjidoJP-FeltPenLMT-TTF.ttf) format("truetype");
+  src: url(raw/ZenjidoJP-FeltPenLMT-TTF.woff) format("woff");
 }
