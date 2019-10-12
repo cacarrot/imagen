@@ -1,12 +1,12 @@
-<p align="center">
-  <img alt="icon" src="public/logo512.png" width="60" />
-</p>
 <h1 align="center">
   Imagen
 </h1>
 <h3 align="center">
   Text-image generate tool, written in ReactJS.
 </h3>
+<p align="center">
+  <img alt="icon" src="image.png" width="100%" />
+</p>
 
 ## :rocket: Run
 
