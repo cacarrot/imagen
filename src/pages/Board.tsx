@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "../fonts/index.css";
 import ImageUtil from "../utils/ImageUtil";
 import Loading from "../components/Loading";
-import { isChrome } from "react-device-detect";
+import { isAndroid, isChrome, isMobile } from "react-device-detect";
 
 type Props = {
   type?: "white" | "black";
@@ -45,13 +45,15 @@ export default (props: Props = { type: "black" }) => {
     });
   };
 
-  const kokubanImage = isChrome
-    ? require("../images/kokuban.webp")
-    : require("../images/kokuban.jpg");
+  const kokubanImage =
+    isChrome && (isAndroid || !isMobile)
+      ? require("../images/kokuban.webp")
+      : require("../images/kokuban.jpg");
 
-  const whiteboardImage = isChrome
-    ? require("../images/whiteboard.webp")
-    : require("../images/whiteboard.jpg");
+  const whiteboardImage =
+    isChrome && (isAndroid || !isMobile)
+      ? require("../images/whiteboard.webp")
+      : require("../images/whiteboard.jpg");
 
   return (
     <>
