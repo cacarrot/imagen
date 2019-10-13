@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
 import "../fonts/index.css";
 import ImageUtil from "../utils/ImageUtil";
-import whiteboardImage from "../images/whiteboard.webp";
-import kokubanImage from "../images/kokuban.webp";
 import Loading from "../components/Loading";
+import { isChrome } from "react-device-detect";
 
 type Props = {
   type?: "white" | "black";
@@ -45,6 +44,14 @@ export default (props: Props = { type: "black" }) => {
       setIsLoading(false);
     });
   };
+
+  const kokubanImage = isChrome
+    ? require("../images/kokuban.webp")
+    : require("../images/kokuban.jpg");
+
+  const whiteboardImage = isChrome
+    ? require("../images/whiteboard.webp")
+    : require("../images/whiteboard.jpg");
 
   return (
     <>

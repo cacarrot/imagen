@@ -14,7 +14,7 @@
 yarn
 
 # Development
-yarn start
+yarn dev
 
 # Production
 yarn build
