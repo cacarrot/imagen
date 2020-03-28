@@ -6,11 +6,16 @@ const fontName = "game";
 
 export default () => {
   const targetRef = useRef(null);
-  const [name, setName] = useState<string>("オルテガ");
+
+  const [status, setStatus] = useState<string>(
+    "オルテガ\nＨＰ：９９９\nＭＰ：　　９\nゆうしゃ"
+  );
   const [serif, setSerif] = useState<string>("ほげ");
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setName(event.target.value);
+  const handleStatusChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setStatus(event.target.value);
   };
 
   const handleSerifChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -24,39 +29,24 @@ export default () => {
   return (
     <>
       {/* 大枠 */}
-      <div
-        ref={targetRef}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-around",
-          width: "512px",
-          height: "256px",
-          boxSizing: "border-box",
-          backgroundColor: "#000"
-        }}
-      >
-        {/* 上枠ここから */}
-
-        {/* 名前 */}
-        <textarea
-          value={name}
-          onChange={handleNameChange}
-          style={Object.assign({}, styles.commonTa, styles.name)}
-        />
-        {/* 職業 */}
-        {/* 性別 */}
-        {/* レベル */}
-        {/* HP */}
-        {/* MP */}
-        {/* 上枠ここまで */}
+      <div ref={targetRef} style={styles.rootContainer}>
+        {/* 上枠(ステータス)ここから */}
+        <div ref={targetRef} style={styles.statusContainer}>
+          <textarea
+            value={status}
+            onChange={handleStatusChange}
+            style={Object.assign({}, styles.commonTa, styles.status)}
+          />
+          {/* 上枠ここまで */}
+        </div>
         {/* 下枠(セリフ)ここから */}
-        <textarea
-          value={serif}
-          onChange={handleSerifChange}
-          style={Object.assign({}, styles.commonTa, styles.serif)}
-        />
+        <div ref={targetRef} style={styles.serifContainer}>
+          <textarea
+            value={serif}
+            onChange={handleSerifChange}
+            style={Object.assign({}, styles.commonTa, styles.serif)}
+          />
+        </div>
         {/* 下枠(セリフ)ここまで */}
       </div>
 
@@ -69,13 +59,44 @@ type Styles = {
   [key: string]: React.CSSProperties;
 };
 
+const SIZE_ROOT_WIDTH = 512;
+const SIZE_ROOT_HEIGHT = (SIZE_ROOT_WIDTH * 3) / 4;
+const SIZE_FONT = 14;
+
 const styles: Styles = {
+  rootContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: SIZE_ROOT_WIDTH,
+    height: SIZE_ROOT_HEIGHT,
+    boxSizing: "border-box",
+    backgroundColor: "#000"
+  },
+  statusContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: SIZE_ROOT_WIDTH,
+    height: "50%",
+    boxSizing: "border-box"
+  },
+  serifContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: SIZE_ROOT_WIDTH,
+    height: "50%",
+    boxSizing: "border-box"
+  },
   commonTa: {
     boxSizing: "border-box",
     backgroundColor: "#000",
     color: "#fff",
     fontFamily: `${fontName}`,
-    fontSize: "16px",
     borderColor: "#fff",
     borderStyle: "solid",
     borderRadius: "10px",
@@ -85,12 +106,15 @@ const styles: Styles = {
     outline: "none",
     resize: "none"
   },
-  name: {
-    width: "25%",
-    height: "40%"
+  status: {
+    width: SIZE_ROOT_WIDTH / 4,
+    height: "90%",
+    fontSize: SIZE_FONT,
+    lineHeight: "20px"
   },
   serif: {
-    width: "90%",
-    height: "40%"
+    width: SIZE_ROOT_WIDTH,
+    height: "90%",
+    fontSize: SIZE_FONT
   }
 };
