@@ -62,6 +62,8 @@ type Styles = {
 const SIZE_ROOT_WIDTH = 512;
 const SIZE_ROOT_HEIGHT = (SIZE_ROOT_WIDTH * 3) / 4;
 const SIZE_FONT = 14;
+const SIZE_LINE = 20;
+const SIZE_PADDING = 10;
 
 const styles: Styles = {
   rootContainer: {
@@ -97,20 +99,20 @@ const styles: Styles = {
     backgroundColor: "#000",
     color: "#fff",
     fontFamily: `${fontName}`,
+    fontSize: SIZE_FONT,
+    lineHeight: `${SIZE_LINE}px`,
     borderColor: "#fff",
     borderStyle: "solid",
     borderRadius: "10px",
     borderWidth: "3px",
     margin: "3px",
-    padding: "13px",
+    padding: SIZE_PADDING,
     outline: "none",
     resize: "none"
   },
   status: {
     width: SIZE_ROOT_WIDTH / 4,
-    height: "90%",
-    fontSize: SIZE_FONT,
-    lineHeight: "20px"
+    height: `${SIZE_LINE * 4 + SIZE_PADDING * 2 + 10}px`
   },
   serif: {
     width: SIZE_ROOT_WIDTH,
