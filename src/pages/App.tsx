@@ -2,11 +2,13 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Board from "./Board";
+import RpgImg from "./RpgImg";
 import SlackIcon from "./SlackIcon";
 import packageJson from "../../package.json";
 
 export default () => {
   const tabs = [
+    { title: "RPG風画像", component: <RpgImg /> },
     { title: "Slackアイコン", component: <SlackIcon /> },
     { title: "黒板", component: <Board type="black" /> },
     { title: "ホワイトボード", component: <Board type="white" /> },
@@ -14,15 +16,17 @@ export default () => {
   ];
   const dispTabList = () => {
     const _children: JSX.Element[] = [];
-    tabs.forEach(item => {
-      _children.push(<Tab>{item.title}</Tab>);
+    tabs.forEach((item, index) => {
+      _children.push(<Tab key={`tab-${index}`}>{item.title}</Tab>);
     });
     return <TabList>{_children}</TabList>;
   };
   const dispTabPanels = () => {
     const _children: JSX.Element[] = [];
-    tabs.forEach(item => {
-      _children.push(<TabPanel>{item.component}</TabPanel>);
+    tabs.forEach((item, index) => {
+      _children.push(
+        <TabPanel key={`panel-${index}`}>{item.component}</TabPanel>
+      );
     });
     return _children;
   };
